@@ -38,7 +38,7 @@ export class Verify {
         const data = await response.json() as { access_token: string, token_type: string, expires_in: number, refresh_token: string, scope: string };
         const token = data.access_token;
 
-        const user = await fetch("https://discord.com/api/users/@me/guilds/1243741807955677214/member", {
+        const user = await fetch(`https://discord.com/api/users/@me/guilds/${process.env.SERVER_ID}/member`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${token}`,
