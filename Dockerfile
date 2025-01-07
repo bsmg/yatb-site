@@ -22,7 +22,7 @@ RUN \
 
 COPY --chown=1001:1001 package.json ./
 COPY --chown=1001:1001 --from=deps /app/node_modules ./node_modules
-COPY --chown=1001:1001 --from=builder /app/build ./build
+COPY --chown=1001:1001 --from=builder /app/dist ./dist
 
 USER nodejs
 EXPOSE 3000
