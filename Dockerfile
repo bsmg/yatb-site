@@ -29,4 +29,4 @@ EXPOSE 3000
 ENV NODE_ENV=production
 ENV IS_DOCKER=true
 
-CMD ["npm", "run", "start"]
+CMD ["node", "./dist/index.js"]
