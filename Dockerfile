@@ -20,7 +20,6 @@ RUN \
   addgroup --system --gid 1001 nodejs && \
   adduser --system --uid 1001 nodejs
 
-COPY --chown=1001:1001 assets/ ./assets
 COPY --chown=1001:1001 package.json ./
 COPY --chown=1001:1001 --from=deps /app/node_modules ./node_modules
 COPY --chown=1001:1001 --from=builder /app/build ./build
