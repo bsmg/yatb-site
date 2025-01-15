@@ -20,14 +20,15 @@ RUN \
   addgroup --system --gid 1001 nodejs && \
   adduser --system --uid 1001 nodejs
 
+COPY --chown=1001:1001 db ./db
 COPY --chown=1001:1001 package.json ./
 COPY --chown=1001:1001 --from=deps /app/node_modules ./node_modules
 COPY --chown=1001:1001 --from=builder /app/dist ./dist
-COPY --chown=1001:1001 db ./db
 
 USER nodejs
 EXPOSE 3000
 ENV NODE_ENV=production
-ENV IS_DOCKER=true
+
+VOLUME ["/app/db"]
 
 CMD ["node", "./dist/index.js"]
